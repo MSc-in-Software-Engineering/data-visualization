@@ -1,0 +1,55 @@
+library(readxl)
+library(ggplot2)
+library(tidyr)
+library(dplyr)
+library(stringr)
+library(maps)
+
+# Utilize this method to read excel files
+WDI_data <- read_excel("Data_Extract_From_World_Development_Indicators.xlsx")
+
+# This filters the columns based on which series we want to utilize
+education_expenditure_data <- WDI_data %>%
+  filter(`Series Name` == "Government expenditure on education, total (% of GDP)") %>%
+  select(`Country Name`, contains("YR")) %>%
+  pivot_longer(cols = -`Country Name`, names_to = "Year", values_to = "Percentage_of_GDP") %>%
+  na.omit()
+
+# Mutate function that cleans the years columns to numeric values
+education_expenditure_data <- education_expenditure_data %>%
+  mutate(Year = as.numeric(str_extract(Year, "[0-9]+")))
+
+year <- 2019
+
+# Filtering out non existing values
+selected_education_expenditure_data <- education_expenditure_data %>%
+  filter(Year == year, !is.na(Percentage_of_GDP))
+
+map <- map_data("world")
+
+join_map_data <- left_join(map, selected_education_expenditure_data, by = c("region" = "Country Name"))
+
+# Adding color column based on percentage of GDP
+join_map_data$Percentage_of_GDP <- as.numeric(join_map_data$Percentage_of_GDP)
+
+#Mutate method to create unique intervals on legend
+join_map_data <- join_map_data %>%
+  mutate(color = case_when(
+    is.na(Percentage_of_GDP) ~ "grey",
+    between(Percentage_of_GDP, 0, 2) ~ "white",
+    between(Percentage_of_GDP, 2, 4) ~ "lightyellow",
+    between(Percentage_of_GDP, 4, 6) ~ "lightgreen",
+    between(Percentage_of_GDP, 6, 8) ~ "green",
+    Percentage_of_GDP > 8 ~ "darkgreen",
+    TRUE ~ "grey"
+  ))
+
+ggplot(data = join_map_data, aes(x = long, y = lat, group = group, fill = color)) +
+  geom_polygon(color = "black") +
+  scale_fill_manual(values = c("darkgreen", "green", "lightgreen", "lightyellow", "white","grey"),
+                    breaks = c("darkgreen", "green", "lightgreen", "lightyellow", "white","grey"),
+                    name = "% of GDP", na.value = "grey",
+                    labels = c("8+ %", "6 to 8 %", "4 to 6 %","2 to 4 %", "0 to 2 %","No data")) +
+  labs(title = paste("Government expenditure on education, total (% of GDP)", year))
+
+
