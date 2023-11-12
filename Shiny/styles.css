@@ -1,0 +1,28 @@
+ /* logo */
+.skin-blue .main-header .logo {
+    background-color: #1e272e;
+}
+
+.skin-blue .main-header .logo:hover {
+    background-color: #1e272e;
+}
+
+.skin-blue .main-header .navbar {
+    background-color: #1e272e;
+}
+
+.content-wrapper { 
+    background-color: #ffffff; 
+}
+
+.skin-blue .main-sidebar {
+    background-color: #2f3542;
+}
+
+.skin-blue .main-sidebar .sidebar .sidebar-menu .active a{
+    background-color: #1e272e;
+}
+
+.skin-blue .main-header .navbar .sidebar-toggle:hover{
+    background-color: #1e272e;
+}

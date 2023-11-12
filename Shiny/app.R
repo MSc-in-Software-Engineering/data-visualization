@@ -4,61 +4,40 @@ library(shinyjs)
 library(readxl)
 library(ggplot2)
 
-data <- read_excel("world-development-indicators-set.xlsx")
+# Pages
+source("./pages/introduction.R")
+source("./pages/page_1.R")
+source("./pages/page_2.R")
+source("./pages/page_3.R")
 
+# Server
+source("./server.R")
+
+# User interface
 ui <- dashboardPage(
+
+  # Header
   dashboardHeader(title = "WDI visualization"),
+
+  # Sidebar
   dashboardSidebar(sidebarMenu(
     menuItem("Introduction", tabName = "introduction"),
-    menuItem("Population growth", tabName = "populationGrowth")
+    menuItem("Page 1", tabName = "pageOne"),
+    menuItem("Page 2", tabName = "pageTwo"),
+    menuItem("Page 3", tabName = "pageThree")
   )),
-  dashboardBody(
-    tags$style(HTML(".content-wrapper { background-color: white; }")),  
-    tabItems(
-    tabItem("introduction",
-            h1("N/A")),
-    tabItem(
-      "populationGrowth",
-      h1("Population growth"),
-      p("N/A"),
-      h2("Annual population growth in percentage"),
-      p("N/A"),
-      fluidRow(
-        column(8, plotOutput("ggplot")),
-        column(
-          4,
-          sliderInput(
-            "selectedYear",
-            "Choose a year to investigate",
-            min = 2010,
-            max = 2019,
-            value = 2010,
-          )
-        ),
-        )
-    )
-  )),
-  skin = "blue"
-)
 
-server <- function(input, output, session) {
-  output$ggplot <- renderPlot({
-    population_data <-
-      na.omit(data[data$`Series Name` == "Population growth (annual %)",])
-    
-    slider_year = paste(input$selectedYear, " [YR", input$selectedYear, "]", sep = "")
-    
-    year = as.numeric(population_data[[slider_year]])
-    country = population_data$`Country Name`
-    
-    sorted_population_data <- population_data[order(year),]
-    
-    ggplot(sorted_population_data, aes(x = country, y = year)) +
-      geom_bar(stat = "identity", width = 0.5, fill="#3C8DBC") +
-      scale_y_continuous(labels = scales::comma) +
-      labs(title = paste("Population growth (", input$selectedYear, ")", sep = ""), x = "Countries", y = "Population growth in percentage (%)") +
-      theme(axis.text.x = element_text(angle = 45, hjust = 1))
-  })
-}
+  # Body
+  dashboardBody(
+    includeCSS("styles.css"),
+    # Tabs
+    tabItems(
+      tabItem("introduction", introduction()),
+      tabItem("pageOne", page_1()),
+      tabItem("pageTwo", page_2()),
+      tabItem("pageThree", page_3())
+    )
+  )
+)
 
 shinyApp(ui, server)
