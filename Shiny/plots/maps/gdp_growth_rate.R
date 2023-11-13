@@ -5,11 +5,10 @@ library(dplyr)
 library(stringr)
 library(maps) 
 
-# Utilize this method to read excel files
-WDI_data <- read_excel("Data_Extract_From_World_Development_Indicators.xlsx")
+source("./globals.R")
 
 # This filters the columns based on which series we want to utilize
-gdp_data <- WDI_data %>%
+gdp_data <- data %>%
   filter(`Series Name` == "GDP growth (annual %)") %>%
   select(`Country Name`, contains("YR")) %>%
   pivot_longer(cols = -`Country Name`, names_to = "Year", values_to = "GDP_Growth") %>%

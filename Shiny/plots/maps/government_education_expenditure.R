@@ -5,11 +5,10 @@ library(dplyr)
 library(stringr)
 library(maps)
 
-# Utilize this method to read excel files
-WDI_data <- read_excel("Data_Extract_From_World_Development_Indicators.xlsx")
+source("./globals.R")
 
 # This filters the columns based on which series we want to utilize
-education_expenditure_data <- WDI_data %>%
+education_expenditure_data <- data %>%
   filter(`Series Name` == "Government expenditure on education, total (% of GDP)") %>%
   select(`Country Name`, contains("YR")) %>%
   pivot_longer(cols = -`Country Name`, names_to = "Year", values_to = "Percentage_of_GDP") %>%
