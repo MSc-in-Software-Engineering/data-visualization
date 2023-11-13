@@ -4,7 +4,7 @@ library(shinyjs)
 library(readxl)
 library(ggplot2)
 
-source("./globals.R")
+data <- read_excel("datasets/world-development-indicators-1.xlsx")
 
 transparent_theme = theme_bw(14) + theme(
   panel.background = element_rect(fill = "transparent"), 

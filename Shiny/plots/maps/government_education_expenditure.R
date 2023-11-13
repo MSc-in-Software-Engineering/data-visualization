@@ -5,10 +5,19 @@ library(dplyr)
 library(stringr)
 library(maps)
 
-source("./globals.R")
+dataset <- read_excel("datasets/world-development-indicators-2.xlsx")
+
+transparent_theme = theme_bw(14) + theme(
+  panel.background = element_rect(fill = "transparent"), 
+  plot.background = element_rect(fill = "transparent", color = NA), 
+  panel.grid = element_blank(),
+  panel.border = element_blank(),
+  axis.line = element_line(),
+  axis.text.x = element_text(angle = 45, hjust = 1)
+)
 
 # This filters the columns based on which series we want to utilize
-education_expenditure_data <- data %>%
+education_expenditure_data <- dataset %>%
   filter(`Series Name` == "Government expenditure on education, total (% of GDP)") %>%
   select(`Country Name`, contains("YR")) %>%
   pivot_longer(cols = -`Country Name`, names_to = "Year", values_to = "Percentage_of_GDP") %>%
@@ -43,12 +52,16 @@ join_map_data <- join_map_data %>%
     TRUE ~ "grey"
   ))
 
-ggplot(data = join_map_data, aes(x = long, y = lat, group = group, fill = color)) +
-  geom_polygon(color = "black") +
-  scale_fill_manual(values = c("darkgreen", "green", "lightgreen", "lightyellow", "white","grey"),
-                    breaks = c("darkgreen", "green", "lightgreen", "lightyellow", "white","grey"),
-                    name = "% of GDP", na.value = "grey",
-                    labels = c("8+ %", "6 to 8 %", "4 to 6 %","2 to 4 %", "0 to 2 %","No data")) +
-  labs(title = paste("Government expenditure on education, total (% of GDP)", year))
+
+government_education_expenditure_map <- function() {
+  ggplot(data = join_map_data, aes(x = long, y = lat, group = group, fill = color)) +
+    geom_polygon(color = "black") +
+    scale_fill_manual(values = c("darkgreen", "green", "lightgreen", "lightyellow", "white","grey"),
+                      breaks = c("darkgreen", "green", "lightgreen", "lightyellow", "white","grey"),
+                      name = "% of GDP", na.value = "grey",
+                      labels = c("8+ %", "6 to 8 %", "4 to 6 %","2 to 4 %", "0 to 2 %","No data")) +
+    labs(title = paste("Government expenditure on education, total (% of GDP)", year))  +
+        transparent_theme
+}
 
 

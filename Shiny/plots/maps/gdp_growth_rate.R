@@ -5,10 +5,19 @@ library(dplyr)
 library(stringr)
 library(maps) 
 
-source("./globals.R")
+dataset <- read_excel("datasets/world-development-indicators-2.xlsx")
+
+transparent_theme = theme_bw(14) + theme(
+  panel.background = element_rect(fill = "transparent"), 
+  plot.background = element_rect(fill = "transparent", color = NA), 
+  panel.grid = element_blank(),
+  panel.border = element_blank(),
+  axis.line = element_line(),
+  axis.text.x = element_text(angle = 45, hjust = 1)
+)
 
 # This filters the columns based on which series we want to utilize
-gdp_data <- data %>%
+gdp_data <- dataset %>%
   filter(`Series Name` == "GDP growth (annual %)") %>%
   select(`Country Name`, contains("YR")) %>%
   pivot_longer(cols = -`Country Name`, names_to = "Year", values_to = "GDP_Growth") %>%
@@ -43,14 +52,17 @@ join_map_data <- join_map_data %>%
     TRUE ~ "grey"
   ))
 
-ggplot(data = join_map_data, aes(x = long, y = lat, group = group, fill = color)) +
-  geom_polygon(color = "black") +
-  scale_fill_manual(values = c("darkgreen", "green", "lightgreen", "red", "darkred","grey"),
-                    breaks = c("darkgreen", "green", "lightgreen", "red", "darkred", "grey"),
-                    name = "Percentage of growth", na.value = "grey",
-                    labels = c("+4 %", "1 to 4 %", "0 to 1 %","-2 to 0 %", "< -2 %","No data")) +
-  scale_shape_manual(values = c(15, 15, 15, 15, 15, 15)) +
-  labs(title = paste("GDP Growth Rate of all Countries in", year))
+gdp_growth_rate_map <- function() {
+  ggplot(data = join_map_data, aes(x = long, y = lat, group = group, fill = color)) +
+    geom_polygon(color = "black") +
+    scale_fill_manual(values = c("darkgreen", "green", "lightgreen", "red", "darkred","grey"),
+                      breaks = c("darkgreen", "green", "lightgreen", "red", "darkred", "grey"),
+                      name = "Percentage of growth", na.value = "grey",
+                      labels = c("+4 %", "1 to 4 %", "0 to 1 %","-2 to 0 %", "< -2 %","No data")) +
+    scale_shape_manual(values = c(15, 15, 15, 15, 15, 15)) +
+    labs(title = paste("GDP Growth Rate of all Countries in", year))  +
+        transparent_theme
+}
 
 
 

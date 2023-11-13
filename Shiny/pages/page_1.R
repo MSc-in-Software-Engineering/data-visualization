@@ -1,9 +1,8 @@
 page_1 <- function(input, output) {
     fluidPage(
-        # First bar chart
-        h1("Population growth"),
+        h1("Page 1"),
         p("N/A"),
-        h2("Annual population growth in percentage"),
+        h2("Subsection 1"),
         p("N/A"),
         fluidRow(
             column(8, plotOutput("population_growth_barchart")),

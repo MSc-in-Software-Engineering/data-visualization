@@ -5,16 +5,16 @@ library(dplyr)
 library(stringr)
 library(plotly)
 
-source("./globals.R")
+dataset <- read_excel("datasets/world-development-indicators-2.xlsx")
 
 # This filters the columns based on which series we want to utilize
-death_rate_data <- data %>%
+death_rate_data <- dataset %>%
   filter(`Series Name` == "Death rate, crude (per 1,000 people)") %>%
   select(`Country Name`, contains("YR")) %>%
   pivot_longer(cols = -`Country Name`, names_to = "Year", values_to = "Death_rate") %>%
   na.omit()
 
-birth_rate_data <- data %>%
+birth_rate_data <- dataset %>%
   filter(`Series Name` == "Birth rate, crude (per 1,000 people)") %>%
   select(`Country Name`, contains("YR")) %>%
   pivot_longer(cols = -`Country Name`, names_to = "Year", values_to = "Birth_rate") %>%
@@ -70,7 +70,8 @@ scatterPlot <- ggplot() +
   theme(legend.position = "bottom") +
   labs(color = " ")
 
-# Modify tooltip content
-p_plotly <- ggplotly(scatterPlot, tooltip = "text")
 
-p_plotly
+# Modify tooltip content
+birth_death_rate_scatterplot <- function() {
+  scatterPlot
+}
