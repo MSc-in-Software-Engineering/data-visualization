@@ -38,7 +38,7 @@ filtered_death_rate_data <- death_rate_data %>%
 filtered_birth_rate_data <- birth_rate_data %>%
   filter(`Country Name` %in% country_1 & !is.na(Birth_rate))
 
-scatterPlot <- ggplot() +
+scatterPlot_1 <- ggplot() +
   geom_point(data = filtered_death_rate_data, aes(x = factor(Year), y = as.numeric(Death_rate), color = "Death Rate", text = paste("Year: ", Year, "<br>Death Rate: ", Death_rate)), size = 3) +
   geom_point(data = filtered_birth_rate_data, aes(x = factor(Year), y = as.numeric(Birth_rate), color = "Birth Rate", text = paste("Year: ", Year, "<br>Birth Rate: ", Birth_rate)), size = 3) +
   scale_color_manual(values = c("Death Rate" = "red", "Birth Rate" = "green")) +
@@ -47,9 +47,9 @@ scatterPlot <- ggplot() +
   labs(color = " ")
 
 # Modify tooltip content
-p_plotly <- ggplotly(scatterPlot, tooltip = "text")
-
-p_plotly
+birth_death_rate_india_scatterplot <- function() {
+  scatterPlot_1
+}
 
 ################################################################################
 country_2 <- c("United States")  
@@ -62,7 +62,7 @@ filtered_death_rate_data <- death_rate_data %>%
 filtered_birth_rate_data <- birth_rate_data %>%
   filter(`Country Name` %in% country_2 & !is.na(Birth_rate))
 
-scatterPlot <- ggplot() +
+scatterPlot_2 <- ggplot() +
   geom_point(data = filtered_death_rate_data, aes(x = factor(Year), y = as.numeric(Death_rate), color = "Death Rate", text = paste("Year: ", Year, "<br>Death Rate: ", Death_rate)), size = 3) +
   geom_point(data = filtered_birth_rate_data, aes(x = factor(Year), y = as.numeric(Birth_rate), color = "Birth Rate", text = paste("Year: ", Year, "<br>Birth Rate: ", Birth_rate)), size = 3) +
   scale_color_manual(values = c("Death Rate" = "red", "Birth Rate" = "green")) +
@@ -72,6 +72,6 @@ scatterPlot <- ggplot() +
 
 
 # Modify tooltip content
-birth_death_rate_scatterplot <- function() {
-  scatterPlot
+birth_death_rate_united_states_scatterplot <- function() {
+  scatterPlot_2
 }
