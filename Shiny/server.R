@@ -6,9 +6,9 @@ source("plots/maps/government_education_expenditure.R")
 source("plots/scatterplots/birth_death_rate_scatterplot.R")
 
 server <- function(input, output, session) {
-    output$population_growth_barchart <- renderPlot({population_growth_barchart(input$populationGrowthBarChartSelectedYear)}, bg = "transparent")
-    output$gdp_growth_rate_map <- renderPlot({gdp_growth_rate_map()}, bg = "transparent")
-    output$government_education_expenditure_map <- renderPlot({government_education_expenditure_map()}, bg = "transparent")
-    output$birth_death_rate_india_scatterplot <- renderPlot({birth_death_rate_india_scatterplot()}, bg = "transparent")
-    output$birth_death_rate_united_states_scatterplot <- renderPlot({birth_death_rate_united_states_scatterplot()}, bg = "transparent")
+    output$population_growth_barchart <- renderPlotly({population_growth_barchart(input$populationGrowthBarChartSelectedYear)})
+    output$gdp_growth_rate_map <- renderPlotly({gdp_growth_rate_map(input$gdpGrowthRateMapSelectedYear)})
+    output$government_education_expenditure_map <- renderPlotly({government_education_expenditure_map(input$governmentEducationExpenditureMapSelectedYear)})
+    output$birth_death_rate_india_scatterplot <- renderPlotly({birth_death_rate_india_scatterplot()})
+    output$birth_death_rate_united_states_scatterplot <- renderPlotly(birth_death_rate_united_states_scatterplot())
 }

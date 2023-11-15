@@ -5,7 +5,7 @@ page_1 <- function(input, output) {
         h2("Subsection 1"),
         p("N/A"),
         fluidRow(
-            column(8, plotOutput("population_growth_barchart")),
+            column(8, plotlyOutput("population_growth_barchart")),
             column(
                 4,
                 sliderInput(

@@ -5,12 +5,12 @@ page_3 <- function(input, output) {
         h2("Subsection 1"),
         p("N/A"),
         fluidRow(
-            column(8, plotOutput("birth_death_rate_india_scatterplot"))
+            column(8, plotlyOutput("birth_death_rate_india_scatterplot"))
         ),
-        h2("Subsection 1"),
+        h2("Subsection 2"),
         p("N/A"),
         fluidRow(
-            column(8, plotOutput("birth_death_rate_united_states_scatterplot"))
+            column(8, plotlyOutput("birth_death_rate_united_states_scatterplot"))
         )
     )
 }

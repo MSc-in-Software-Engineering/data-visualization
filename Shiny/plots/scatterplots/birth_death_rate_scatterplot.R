@@ -48,7 +48,7 @@ scatterPlot_1 <- ggplot() +
 
 # Modify tooltip content
 birth_death_rate_india_scatterplot <- function() {
-  scatterPlot_1
+  ggplotly(scatterPlot_1, tooltip = "text")
 }
 
 ################################################################################
@@ -70,8 +70,8 @@ scatterPlot_2 <- ggplot() +
   theme(legend.position = "bottom") +
   labs(color = " ")
 
-
 # Modify tooltip content
 birth_death_rate_united_states_scatterplot <- function() {
-  scatterPlot_2
+   ggplotly(scatterPlot_2, tooltip = "text")
 }
+
