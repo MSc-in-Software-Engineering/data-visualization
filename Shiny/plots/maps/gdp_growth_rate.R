@@ -29,18 +29,18 @@ gdp_data <- gdp_data %>%
 
 gdp_growth_rate_map <- function(selectedYear) {
   year <- selectedYear
-
+  
   # Filtering out non-existing values
   selected_gdp_data <- gdp_data %>%
     filter(Year == year, !is.na(GDP_Growth))
-
+  
   map <- map_data("world")
-
+  
   join_map_data <- left_join(map, selected_gdp_data, by = c("region" = "Country Name"))
-
+  
   # Adding color column based on GDP growth
   join_map_data$GDP_Growth <- as.numeric(join_map_data$GDP_Growth)
-
+  
   # Mutate method to create unique intervals on legend
   join_map_data <- join_map_data %>%
     mutate(color = case_when(
@@ -52,9 +52,9 @@ gdp_growth_rate_map <- function(selectedYear) {
       GDP_Growth > 4 ~ "darkgreen",
       TRUE ~ "grey"
     ))
-
+  
   gdp_growth_rate_map_plot <- ggplot(data = join_map_data, aes(x = long, y = lat, group = group, fill = color, text = paste("GDP Growth: ", round(GDP_Growth, digits = 2), "%"))) +
-    geom_polygon(color = "black") +
+    geom_polygon(size = 0.1, color = "black") +
     scale_fill_manual(
       values = c("darkgreen", "green", "lightgreen", "red", "darkred", "grey"),
       breaks = c("darkgreen", "green", "lightgreen", "red", "darkred", "grey"),
@@ -64,6 +64,6 @@ gdp_growth_rate_map <- function(selectedYear) {
     scale_shape_manual(values = c(15, 15, 15, 15, 15, 15)) +
     labs(title = paste("GDP Growth Rate of all Countries in", year)) +
     transparent_theme
-
+  
   ggplotly(gdp_growth_rate_map_plot, tooltip = "text")
 }

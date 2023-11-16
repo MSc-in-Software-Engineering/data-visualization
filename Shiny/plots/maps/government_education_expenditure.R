@@ -56,7 +56,7 @@ government_education_expenditure_map <- function(selectedYear) {
 
 
   government_education_expenditure_map_plot <- ggplot(data = join_map_data, aes(x = long, y = lat, group = group, fill = color, text = paste("Expenditure of GDP (%): ", round(Percentage_of_GDP, digits = 2), "%"))) +
-    geom_polygon(color = "black") +
+    geom_polygon(size = 0.1, color = "black") +
     scale_fill_manual(
       values = c("darkgreen", "green", "lightgreen", "lightyellow", "white", "grey"),
       breaks = c("darkgreen", "green", "lightgreen", "lightyellow", "white", "grey"),
