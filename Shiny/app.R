@@ -9,7 +9,7 @@ source("./pages/introduction.R")
 source("./pages/page_1.R")
 source("./pages/page_2.R")
 source("./pages/page_3.R")
-source("./pages/page_4.R")
+source("./pages/conclusion.R")
 source("./pages/project_report.R")
 
 # Server
@@ -24,11 +24,12 @@ ui <- dashboardPage(
 
   # Sidebar
   dashboardSidebar(sidebarMenu(
-    menuItem("Introduction", tabName = "introduction"),
-    menuItem("Population growth", tabName = "pageOne"),
-    menuItem("GDP growth", tabName = "pageTwo"),
-    menuItem("Death and birth rate", tabName = "pageThree"),
-    menuItem("Project report", tabName = "projectReport")
+    menuItem("1. Introduction", tabName = "introduction"),
+    menuItem("2. Population growth", tabName = "pageOne"),
+    menuItem("3. GDP growth", tabName = "pageTwo"),
+    menuItem("4. Death and birth rate", tabName = "pageThree"),
+    menuItem("5. Conclusion", tabName = "conclusion"),
+    menuItem("6. Download project report", tabName = "projectReport")
   )),
 
   # Body
@@ -40,7 +41,7 @@ ui <- dashboardPage(
       tabItem("pageOne", page_1()),
       tabItem("pageTwo", page_2()),
       tabItem("pageThree", page_3()),
-      tabItem("pageFour", page_4()),
+      tabItem("conclusion", conclusion()),
       tabItem("projectReport", project_report())
     )
   )
