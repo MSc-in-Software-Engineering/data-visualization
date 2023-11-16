@@ -26,11 +26,13 @@ population_growth_increase_barchart <- function(selectedYear) {
     population_data_for_selected_year <- population_data %>%
         filter(Year == year, !is.na(Population_growth))
 
+    population_data_for_selected_year$Population_growth <- as.numeric(as.character(population_data_for_selected_year$Population_growth))
+
     # Getting the 10 countries with the lowest Population growth and arranging them
     highest_countries <- population_data_for_selected_year %>%
         top_n(20, wt = Population_growth) %>%
         arrange(desc(Population_growth)) %>%
-        mutate(Population_growth = round(as.numeric(as.character(Population_growth)), digits = 2))
+        mutate(Population_growth = round(Population_growth, digits = 2))
 
     highest_countries$`Country Name` <- factor(highest_countries$`Country Name`, levels = unique(highest_countries$`Country Name`))
 
