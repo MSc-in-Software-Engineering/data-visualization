@@ -15,19 +15,19 @@ source("./pages/project_report.R")
 # Server
 source("./server.R")
 
+
 # User interface
 ui <- dashboardPage(
 
   # Header
-  dashboardHeader(title = "WDI visualization"),
+  dashboardHeader(title = "World Development Indicators", titleWidth = 300),
 
   # Sidebar
   dashboardSidebar(sidebarMenu(
     menuItem("Introduction", tabName = "introduction"),
-    menuItem("Page 1", tabName = "pageOne"),
-    menuItem("Page 2", tabName = "pageTwo"),
-    menuItem("Page 3", tabName = "pageThree"),
-    menuItem("Page 4", tabName = "pageFour"),
+    menuItem("Population growth", tabName = "pageOne"),
+    menuItem("GDP growth", tabName = "pageTwo"),
+    menuItem("Death and birth rate", tabName = "pageThree"),
     menuItem("Project report", tabName = "projectReport")
   )),
 
