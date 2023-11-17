@@ -7,7 +7,7 @@ library(maps)
 library(plotly)
 
 WDI_data <-
-  read_excel("datasets/world-development-indicators-2.xlsx")
+  read_excel("datasets/world-development-indicators.xlsx")
 
 # Filtering to get GDP growth data
 gdp_data <- WDI_data %>%
@@ -58,7 +58,7 @@ gdp_growth_top_barchart <- function(selectedYear) {
     geom_bar(stat = "identity", color = "black") +
     scale_fill_gradient(low = "lightgreen", high = "darkgreen") +
     labs(
-      title = paste("Top 10 GDP Growth Rates in", year),
+      title = paste("Top 20 countries with highest GDP Growth Rates in", year),
       x = "Country",
       y = "GDP Growth Rate (%)"
     ) +
@@ -105,7 +105,7 @@ gdp_growth_low_barchart <- function(selectedYear) {
     geom_bar(stat = "identity", color = "black") +
     scale_fill_gradient(low = "darkred", high = "indianred1") +
     labs(
-      title = paste("Top 10 GDP Growth Rates in", year),
+      title = paste("Top 20 countries with lowest GDP Growth Rates in", year),
       x = "Country",
       y = "GDP Growth Rate (%)"
     ) +

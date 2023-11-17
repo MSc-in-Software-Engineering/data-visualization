@@ -5,7 +5,7 @@ library(dplyr)
 library(stringr)
 library(plotly)
 
-dataset <- read_excel("datasets/world-development-indicators-2.xlsx")
+dataset <- read_excel("datasets/world-development-indicators.xlsx")
 
 # This filters the columns based on which series we want to utilize
 death_rate_data <- dataset %>%

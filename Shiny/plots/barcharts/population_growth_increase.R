@@ -5,7 +5,7 @@ library(dplyr)
 library(stringr)
 library(maps)
 
-data <- read_excel("datasets/world-development-indicators-1.xlsx")
+data <- read_excel("datasets/world-development-indicators.xlsx")
 
 # Filtering to get Population growth data
 population_data <- data %>%

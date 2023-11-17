@@ -1,0 +1,61 @@
+library(readxl)
+library(ggplot2)
+library(tidyr)
+library(dplyr)
+library(stringr)
+library(maps)
+library(plotly)
+
+datas <-
+  read_excel("datasets/world-development-indicators.xlsx")
+
+gdp_vs_population_growth_linechart <- function(selectedCountry) {
+  long_data <- data %>%
+    gather(Year, Value, 5:14) %>%
+    mutate(Year = as.numeric(gsub(".*?(\\d{4}).*", "\\1", Year)))
+
+  long_data <-
+    long_data[long_data$"Series Name" %in% c("Population growth (annual %)", "GDP growth (annual %)"), ]
+
+  long_data$Value <- as.numeric(long_data$Value)
+  long_data[is.na(long_data)] <- 0
+
+  filtered_data <- long_data[long_data$`Country Name` == selectedCountry, ]
+
+  linechart <- ggplot(
+    data = filtered_data,
+    aes(x = Year, y = Value, group = `Series Name`, color = `Series Name`, linetype = `Series Name`)
+  ) +
+    geom_smooth(method = "loess", se = FALSE, size = 2, span = 0.3) +
+    geom_point(size = 4, shape = 19, fill = "white") +
+    labs(
+      x = "Year",
+      y = "Percentage"
+    ) +
+    scale_y_continuous(
+      limits = c(0, max(filtered_data$Value) + 1),
+      breaks = seq(0, max(filtered_data$Value) + 1, 0.5)
+    ) +
+    scale_x_continuous(breaks = unique(long_data$Year)) +
+    scale_color_manual(values = c(
+      "Population growth (annual %)" = "#138D75",
+      "GDP growth (annual %)" = "#900C3F"
+    )) +
+    scale_linetype_manual(values = c(
+      "Population growth (annual %)" = "solid",
+      "GDP growth (annual %)" = "dashed"
+    )) +
+    theme_minimal() +
+    theme(
+      panel.grid.major.x = element_blank(),
+      panel.grid.minor.x = element_blank(),
+      panel.grid.minor.y = element_blank(),
+      axis.text.x = element_text(angle = 45, hjust = 1),
+      axis.ticks.x = element_blank()
+    ) +
+    annotate(geom = "segment", x = unique(long_data$Year), xend = unique(long_data$Year), y = -0.1, yend = 0.1, color = "black")
+
+  p_plotly <- ggplotly(linechart, tooltip = "text")
+
+  p_plotly
+}

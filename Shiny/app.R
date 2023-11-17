@@ -9,12 +9,13 @@ source("./pages/introduction.R")
 source("./pages/page_1.R")
 source("./pages/page_2.R")
 source("./pages/page_3.R")
+source("./pages/page_4.R")
+source("./pages/page_5.R")
 source("./pages/conclusion.R")
 source("./pages/project_report.R")
 
 # Server
 source("./server.R")
-
 
 # User interface
 ui <- dashboardPage(
@@ -28,8 +29,10 @@ ui <- dashboardPage(
     menuItem("2. Population growth", tabName = "pageOne"),
     menuItem("3. GDP growth", tabName = "pageTwo"),
     menuItem("4. Death and birth rate", tabName = "pageThree"),
-    menuItem("5. Conclusion", tabName = "conclusion"),
-    menuItem("6. Download project report", tabName = "projectReport")
+    menuItem("5. Life expectancy", tabName = "pageFour"),
+    menuItem("6. Correlations", tabName = "pageFive"),
+    menuItem("7. Conclusion", tabName = "conclusion"),
+    menuItem("8. Download project report", tabName = "projectReport")
   )),
 
   # Body
@@ -41,6 +44,8 @@ ui <- dashboardPage(
       tabItem("pageOne", page_1()),
       tabItem("pageTwo", page_2()),
       tabItem("pageThree", page_3()),
+      tabItem("pageFour", page_4()),
+      tabItem("pageFive", page_5()),
       tabItem("conclusion", conclusion()),
       tabItem("projectReport", project_report())
     )

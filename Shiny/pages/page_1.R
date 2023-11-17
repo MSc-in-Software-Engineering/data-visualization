@@ -6,9 +6,10 @@ page_1 <- function(input, output) {
         h2("Highest population growth", style = "font-weight: 600;"),
         p("N/A", style = "font-size:17px;"),
         fluidRow(
-            column(8, plotlyOutput("population_growth_increase_barchart")),
-            column(
-                4,
+            sidebarPanel(
+                width = 3,
+                align = "center",
+                style = "margin-top: 100px;",
                 sliderInput(
                     "populationGrowthIncreaseBarChartSelectedYear",
                     "Select year (2010 - 2022)",
@@ -17,14 +18,20 @@ page_1 <- function(input, output) {
                     value = 2022,
                 )
             ),
+            mainPanel(
+                width = 9,
+                style = "margin-top: 10px;",
+                plotlyOutput("population_growth_increase_barchart")
+            ),
         ),
         column(width = 12, tags$hr()),
         h2("Lowest population growth", style = "font-weight: 600;"),
         p("N/A", style = "font-size:17px;"),
         fluidRow(
-            column(8, plotlyOutput("population_growth_decrease_barchart")),
-            column(
-                4,
+            sidebarPanel(
+                width = 3,
+                align = "center",
+                style = "margin-top: 100px;",
                 sliderInput(
                     "populationGrowthDecreaseBarChartSelectedYear",
                     "Select year (2010 - 2022)",
@@ -32,6 +39,11 @@ page_1 <- function(input, output) {
                     max = 2022,
                     value = 2022,
                 )
+            ),
+            mainPanel(
+                width = 9,
+                style = "margin-top: 10px;",
+                plotlyOutput("population_growth_decrease_barchart")
             ),
         ),
         column(width = 12, tags$hr()),
