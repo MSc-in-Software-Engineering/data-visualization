@@ -6,8 +6,6 @@ library(stringr)
 library(maps)
 library(plotly)
 
-dataset <- read_excel("datasets/world-development-indicators.xlsx")
-
 transparent_theme <- theme_bw(14) + theme(
   panel.background = element_rect(fill = "transparent"),
   plot.background = element_rect(fill = "transparent", color = NA),
@@ -17,7 +15,7 @@ transparent_theme <- theme_bw(14) + theme(
 )
 
 # This filters the columns based on which series we want to utilize
-gdp_data <- dataset %>%
+gdp_data <- WDI_data %>%
   filter(`Series Name` == "GDP growth (annual %)") %>%
   select(`Country Name`, contains("YR")) %>%
   pivot_longer(cols = -`Country Name`, names_to = "Year", values_to = "GDP_Growth") %>%

@@ -5,10 +5,8 @@ library(dplyr)
 library(stringr)
 library(maps)
 
-data <- read_excel("datasets/world-development-indicators.xlsx")
-
 # Filtering to get Population growth data
-population_data <- data %>%
+population_data <- WDI_data %>%
     filter(`Series Name` == "Population growth (annual %)") %>%
     select(`Country Name`, contains("YR")) %>%
     pivot_longer(cols = -`Country Name`, names_to = "Year", values_to = "Population_growth") %>%

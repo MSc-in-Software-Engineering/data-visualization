@@ -6,8 +6,6 @@ library(stringr)
 library(maps)
 library(plotly)
 
-dataset <- read_excel("datasets/world-development-indicators.xlsx")
-
 transparent_theme <- theme(
   panel.background = element_rect(fill = "transparent"),
   plot.background = element_rect(fill = "transparent", color = NA),
@@ -17,7 +15,7 @@ transparent_theme <- theme(
 )
 
 # This filters the columns based on which series we want to utilize
-education_expenditure_data <- dataset %>%
+education_expenditure_data <- WDI_data %>%
   filter(`Series Name` == "Government expenditure on education, total (% of GDP)") %>%
   select(`Country Name`, contains("YR")) %>%
   pivot_longer(cols = -`Country Name`, names_to = "Year", values_to = "Percentage_of_GDP") %>%

@@ -15,8 +15,7 @@ page_5 <- function(input, output) {
                 width = 9,
                 style = "margin-top: 10px;",
                 plotlyOutput("gdp_vs_population_growth_linechart")
-            ),
-            tags$style(type = "text/css", "#lineChart { margin-top: 500px; }")
+            )
         )
     )
 }

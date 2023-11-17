@@ -6,11 +6,8 @@ library(stringr)
 library(maps)
 library(plotly)
 
-datas <-
-  read_excel("datasets/world-development-indicators.xlsx")
-
 gdp_vs_population_growth_linechart <- function(selectedCountry) {
-  long_data <- data %>%
+  long_data <- WDI_data %>%
     gather(Year, Value, 5:14) %>%
     mutate(Year = as.numeric(gsub(".*?(\\d{4}).*", "\\1", Year)))
 

@@ -5,16 +5,14 @@ library(dplyr)
 library(stringr)
 library(plotly)
 
-dataset <- read_excel("datasets/world-development-indicators.xlsx")
-
 # This filters the columns based on which series we want to utilize
-death_rate_data <- dataset %>%
+death_rate_data <- WDI_data %>%
   filter(`Series Name` == "Death rate, crude (per 1,000 people)") %>%
   select(`Country Name`, contains("YR")) %>%
   pivot_longer(cols = -`Country Name`, names_to = "Year", values_to = "Death_rate") %>%
   na.omit()
 
-birth_rate_data <- dataset %>%
+birth_rate_data <- WDI_data %>%
   filter(`Series Name` == "Birth rate, crude (per 1,000 people)") %>%
   select(`Country Name`, contains("YR")) %>%
   pivot_longer(cols = -`Country Name`, names_to = "Year", values_to = "Birth_rate") %>%
