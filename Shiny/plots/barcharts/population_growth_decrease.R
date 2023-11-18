@@ -5,6 +5,8 @@ library(dplyr)
 library(stringr)
 library(maps)
 
+WDI_data <- read_excel("datasets/world-development-indicators.xlsx")
+
 # Filtering to get Population growth data
 population_data <- WDI_data %>%
     filter(`Series Name` == "Population growth (annual %)") %>%

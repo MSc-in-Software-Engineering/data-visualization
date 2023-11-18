@@ -1,8 +1,8 @@
 introduction <- function(input, output) {
     fluidPage(
         h1("📊 Introduction", style = "font-weight: 600;"),
-        p("The introductory page consolidates the proposal as well as aspects to why the visualization of this data would occur. The dashboard is based upon research questions developed and will justify both the objectives and goals for the visualization design. When doing so, the visual encodings of processing data will be presented to accommodate the techniques used for each of the accomplished charts.", style = "font-size:17px; max-width: 1400px;"),
-        p("Additionally, the main thread of this dashboard is to construct a linear story of the motivation for the research conducted, while promoting a great use case for the theory and practices gathered from the Data Visualization course at University of Southern Denmark.", style = "font-size:17px; max-width: 1400px;"),
+        p("The introductory page consolidates the proposal as well as aspects to why the visualization of this data would occur. The dashboard is based upon research questions developed and will justify both the objectives and goals for the visualization design. When doing so, the visual encodings of processing data will be presented to accommodate the techniques used for each of the accomplished charts. The main thread of this dashboard is to construct a linear story of the motivation for the research conducted, while promoting a great use case for the theory and practices gathered from the Data Visualization course at University of Southern Denmark.", style = "font-size:17px; max-width: 1400px;"),
+        p("To navigate within dashboard proceed to the left sidebar. The tabs and their corresponding content is in a hierarchy starting from [Introduction] to [Download Project Report]. Each tab correlates to one or more variables to be visualized, whereas each section consolidates one or more subsections to answer the research questions accordingly. It is recommended to look through this page first before continuing onwards to get a proper understanding of the visualization to be conducted in the subsequent sections.", style = "font-size:17px; max-width: 1400px;"),
         column(width = 12, tags$hr()),
         h2("🏆Team members", style = "font-weight: 600;"),
         p("The team stems from Group 2 and consolidates of the following members:", style = "font-size:17px;"),
@@ -10,6 +10,11 @@ introduction <- function(input, output) {
         p("• Karthikan Vimalarasan", style = "font-size:17px; text-indent: 20px; font-style: italic;"),
         p("• Sathveekan Mohanabalan", style = "font-size:17px; text-indent: 20px; font-style: italic;"),
         p("• Wahid Tobias Winberg Razzaghi", style = "font-size:17px; text-indent: 20px; font-style: italic;"),
+        column(width = 12, tags$hr()),
+        h2("🌎 Topic - World Development Indicators", style = "font-weight: 600;"),
+        p("The point of interest, problem as well as research questions to be conducted was conformed to the dataset provided by the World Bank.", style = "font-size:17px;"),
+        p("The World Bank is the primary collection of development indicators from officially international sources, and can be accessed here:", style = "font-size:17px;"),
+        a(href="https://databank.worldbank.org/source/world-development-indicators", "World Development Indicators - Databank", style = "font-size:17px; text-indent: 20px; font-style: italic;"),
         column(width = 12, tags$hr()),
         h2("💡Point of interest", style = "font-weight: 600;"),
         p("Before the team were to conduct a thorough research and visualization of data, a point of interest was stated for the project as the basis:", style = "font-size:17px;"),
@@ -25,10 +30,6 @@ introduction <- function(input, output) {
         p('2. "How has the economic growth progressed in the last decade?"', style = "font-size:17px; text-indent: 20px; font-style: italic;"),
         p('3. "Which countries have the highest living standards?"', style = "font-size:17px; text-indent: 20px; font-style: italic;"),
         p('4. "Which countries have the lowest living standards?"', style = "font-size:17px; text-indent: 20px; font-style: italic;"),
-        column(width = 12, tags$hr()),
-        h2("📈 Dataset utilized", style = "font-weight: 600;"),
-        p("The point of interest, problem as well as research questions was conformed to the dataset provided by the World Bank", style = "font-size:17px;"),
-        p("The World Bank is the primary collection of development indicators from officially international sources, and can be accessed here:", style = "font-size:17px;"),
-        a(href="https://databank.worldbank.org/source/world-development-indicators", "World Development Indicators - Databank", style = "font-size:17px; text-indent: 20px; font-style: italic;"),
+        column(width = 12, tags$hr())
     )
 }

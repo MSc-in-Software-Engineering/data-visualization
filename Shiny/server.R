@@ -8,8 +8,6 @@ source("plots/maps/government_education_expenditure.R")
 source("plots/scatterplots/birth_death_rate_scatterplot.R")
 source("plots/linecharts/GDPvsPopulationGrowth.R")
 
-WDI_data <- read_excel("datasets/world-development-indicators.xlsx")
-
 server <- function(input, output, session) {
     output$population_growth_increase_barchart <- renderPlotly({population_growth_increase_barchart(input$populationGrowthIncreaseBarChartSelectedYear)})
     output$population_growth_decrease_barchart <- renderPlotly({population_growth_decrease_barchart(input$populationGrowthDecreaseBarChartSelectedYear)})

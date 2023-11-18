@@ -6,6 +6,8 @@ library(stringr)
 library(maps)
 library(plotly)
 
+WDI_data <- read_excel("datasets/world-development-indicators.xlsx")
+
 transparent_theme <- theme_bw(14) + theme(
   panel.background = element_rect(fill = "transparent"),
   plot.background = element_rect(fill = "transparent", color = NA),

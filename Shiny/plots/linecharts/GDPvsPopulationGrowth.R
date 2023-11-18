@@ -6,11 +6,13 @@ library(stringr)
 library(maps)
 library(plotly)
 
-gdp_vs_population_growth_linechart <- function(selectedCountry) {
-  long_data <- WDI_data %>%
+WDI_data <- read_excel("datasets/world-development-indicators.xlsx")
+
+long_data <- WDI_data %>%
     gather(Year, Value, 5:14) %>%
     mutate(Year = as.numeric(gsub(".*?(\\d{4}).*", "\\1", Year)))
 
+gdp_vs_population_growth_linechart <- function(selectedCountry) {
   long_data <-
     long_data[long_data$"Series Name" %in% c("Population growth (annual %)", "GDP growth (annual %)"), ]
 

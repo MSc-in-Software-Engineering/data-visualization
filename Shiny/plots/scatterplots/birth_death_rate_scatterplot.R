@@ -5,6 +5,8 @@ library(dplyr)
 library(stringr)
 library(plotly)
 
+WDI_data <- read_excel("datasets/world-development-indicators.xlsx")
+
 # This filters the columns based on which series we want to utilize
 death_rate_data <- WDI_data %>%
   filter(`Series Name` == "Death rate, crude (per 1,000 people)") %>%
