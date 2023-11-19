@@ -52,26 +52,27 @@ birth_death_rate_india_scatterplot <- function() {
 }
 
 ################################################################################
-country_2 <- c("United States")  
-
-# Filtering out non existing values
-filtered_death_rate_data <- death_rate_data %>%
-  filter(`Country Name` %in% country_2 & !is.na(Death_rate))
-
-# Filter for the selected countries and non-missing values for birth rate
-filtered_birth_rate_data <- birth_rate_data %>%
-  filter(`Country Name` %in% country_2 & !is.na(Birth_rate))
-
-scatterPlot_2 <- ggplot() +
-  geom_point(data = filtered_death_rate_data, aes(x = factor(Year), y = as.numeric(Death_rate), color = "Death Rate", text = paste("Year: ", Year, "<br>Death Rate: ", Death_rate)), size = 3) +
-  geom_point(data = filtered_birth_rate_data, aes(x = factor(Year), y = as.numeric(Birth_rate), color = "Birth Rate", text = paste("Year: ", Year, "<br>Birth Rate: ", Birth_rate)), size = 3) +
-  scale_color_manual(values = c("Death Rate" = "red", "Birth Rate" = "green")) +
-  labs(x = "Year", y = "Rate (per 1,000 people)", title = "Death and Birth Rate of United States Over Years") +
-  theme(legend.position = "bottom") +
-  labs(color = " ")
 
 # Modify tooltip content
-birth_death_rate_united_states_scatterplot <- function() {
+birth_death_rate_scatterplot <- function(selectedCountry) {
+  country_2 <- c(selectedCountry)  
+
+  # Filtering out non existing values
+  filtered_death_rate_data <- death_rate_data %>%
+    filter(`Country Name` %in% country_2 & !is.na(Death_rate))
+
+  # Filter for the selected countries and non-missing values for birth rate
+  filtered_birth_rate_data <- birth_rate_data %>%
+    filter(`Country Name` %in% country_2 & !is.na(Birth_rate))
+
+  scatterPlot_2 <- ggplot() +
+    geom_point(data = filtered_death_rate_data, aes(x = factor(Year), y = as.numeric(Death_rate), color = "Death Rate", text = paste("Year: ", Year, "<br>Death Rate: ", Death_rate)), size = 3) +
+    geom_point(data = filtered_birth_rate_data, aes(x = factor(Year), y = as.numeric(Birth_rate), color = "Birth Rate", text = paste("Year: ", Year, "<br>Birth Rate: ", Birth_rate)), size = 3) +
+    scale_color_manual(values = c("Death Rate" = "red", "Birth Rate" = "green")) +
+    labs(x = "Year", y = "Rate (per 1,000 people)", title = paste("Death and Birth Rate of", selectedCountry ,"Over Years")) +
+    theme(legend.position = "bottom") +
+    labs(color = " ") 
+
    ggplotly(scatterPlot_2, tooltip = "text")
 }
 

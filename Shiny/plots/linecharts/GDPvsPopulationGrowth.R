@@ -25,7 +25,7 @@ gdp_vs_population_growth_linechart <- function(selectedCountry) {
     data = filtered_data,
     aes(x = Year, y = Value, group = `Series Name`, color = `Series Name`, linetype = `Series Name`)
   ) +
-    geom_smooth(method = "loess", se = FALSE, size = 2, span = 0.3) +
+    geom_smooth(method = "loess", se = FALSE, size = 1, span = 0.2) +
     geom_point(size = 4, shape = 19, fill = "white") +
     labs(
       x = "Year",
