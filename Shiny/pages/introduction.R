@@ -26,10 +26,11 @@ introduction <- function(input, output) {
         column(width = 12, tags$hr()),
         h2("❔Research questions", style = "font-weight: 600;"),
         p("As a result from the problem, several research questions was developed to accommodate reviewing the problem previously mentioned:", style = "font-size:17px;"),
-        p('1. "How has the global population progressed in the last decade?"', style = "font-size:17px; text-indent: 20px; font-style: italic;"),
-        p('2. "How has the economic growth progressed in the last decade?"', style = "font-size:17px; text-indent: 20px; font-style: italic;"),
-        p('3. "Which countries have the highest living standards?"', style = "font-size:17px; text-indent: 20px; font-style: italic;"),
-        p('4. "Which countries have the lowest living standards?"', style = "font-size:17px; text-indent: 20px; font-style: italic;"),
+        p('1. "How has the global population growth progressed throughout the years?"', style = "font-size:17px; text-indent: 20px; font-style: italic;"),
+        p('2. "Has the GDP of all countries grown positively within the last decade?"', style = "font-size:17px; text-indent: 20px; font-style: italic;"),
+        p('3. "How large of a proportion of the country’s GDP is spent on education?"', style = "font-size:17px; text-indent: 20px; font-style: italic;"),
+        p('4. "How has the death- and birth rate of different countries progressed over the years?"', style = "font-size:17px; text-indent: 20px; font-style: italic;"),
+        p('5. "What gender has the highest life expectancy generally in the years past?"', style = "font-size:17px; text-indent: 20px; font-style: italic;"),
         column(width = 12, tags$hr())
     )
 }
