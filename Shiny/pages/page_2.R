@@ -16,6 +16,7 @@ page_2 <- function(input, output) {
           min = 2010,
           max = 2022,
           value = 2022,
+          sep = "",
         )
       ),
       mainPanel(
@@ -38,6 +39,7 @@ page_2 <- function(input, output) {
           min = 2010,
           max = 2022,
           value = 2022,
+          sep = "",
         )
       ),
       mainPanel(
@@ -60,6 +62,7 @@ page_2 <- function(input, output) {
           min = 2010,
           max = 2022,
           value = 2022,
+          sep = "",
         )
       ),
       mainPanel(
@@ -81,6 +84,7 @@ page_2 <- function(input, output) {
           min = 2010,
           max = 2022,
           value = 2022,
+          sep = "",
         )
       ),
       mainPanel(
