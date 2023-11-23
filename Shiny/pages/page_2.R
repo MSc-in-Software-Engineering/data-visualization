@@ -21,7 +21,7 @@ page_2 <- function(input, output) {
       mainPanel(
         width = 9,
         style = "margin-top: 10px;",
-        plotlyOutput("gdp_growth_rate_map")
+        plotlyOutput("gdp_growth_rate_map", height=800)
       ),
     ),
     column(width = 12, tags$hr()),
@@ -86,7 +86,7 @@ page_2 <- function(input, output) {
       mainPanel(
         width = 9,
         style = "margin-top: 10px;",
-        plotlyOutput("government_education_expenditure_map")
+        plotlyOutput("government_education_expenditure_map", height=800)
       )
     ),
     column(width = 12, tags$hr()),

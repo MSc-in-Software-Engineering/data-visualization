@@ -28,6 +28,7 @@ gdp_data <- gdp_data %>%
   mutate(Year = as.numeric(str_extract(Year, "[0-9]+")))
 
 gdp_growth_rate_map <- function(selectedYear) {
+
   year <- selectedYear
   
   # Filtering out non-existing values
@@ -41,29 +42,48 @@ gdp_growth_rate_map <- function(selectedYear) {
   # Adding color column based on GDP growth
   join_map_data$GDP_Growth <- as.numeric(join_map_data$GDP_Growth)
   
-  # Mutate method to create unique intervals on legend
-  join_map_data <- join_map_data %>%
-    mutate(color = case_when(
-      is.na(GDP_Growth) ~ "grey",
-      GDP_Growth < -2 ~ "darkred",
-      between(GDP_Growth, -2, 0) ~ "red",
-      between(GDP_Growth, 0, 1) ~ "lightgreen",
-      between(GDP_Growth, 1, 4) ~ "green",
-      GDP_Growth > 4 ~ "darkgreen",
-      TRUE ~ "grey"
-    ))
+  legend_values <- c("+4 %", "1 to 4 %", "0 to 1 %", "-2 to 0 %", "< -2 %", "No data")
   
-  gdp_growth_rate_map_plot <- ggplot(data = join_map_data, aes(x = long, y = lat, group = group, fill = color, text = paste("GDP Growth: ", round(GDP_Growth, digits = 2), "%"))) +
-    geom_polygon(size = 0.1, color = "black") +
-    scale_fill_manual(
-      values = c("darkgreen", "green", "lightgreen", "red", "darkred", "grey"),
-      breaks = c("darkgreen", "green", "lightgreen", "red", "darkred", "grey"),
-      name = "Percentage of growth", na.value = "grey",
-      labels = c("+4 %", "1 to 4 %", "0 to 1 %", "-2 to 0 %", "< -2 %", "No data")
-    ) +
-    scale_shape_manual(values = c(15, 15, 15, 15, 15, 15)) +
+  # Mutating intervals with the growth percentage values
+  join_map_data <- join_map_data %>%
+    mutate(
+      color = factor(
+        case_when(
+          is.na(GDP_Growth) ~ legend_values[6],
+          GDP_Growth < -2 ~ legend_values[5],  
+          between(GDP_Growth, -2, 0) ~ legend_values[4],
+          between(GDP_Growth, 0, 1) ~ legend_values[3],
+          between(GDP_Growth, 1, 4) ~ legend_values[2],
+          GDP_Growth > 4 ~ legend_values[1],
+          TRUE ~ "No data"
+        ),
+        levels = legend_values
+      )
+    )
+  
+  # Color scale for the percentage intervals
+  color_scale <- scale_fill_manual(
+    values = c("darkgreen", "green", "lightgreen", "red", "darkred", "grey"),
+    breaks = legend_values,
+    labels = legend_values,
+    name = "Percentage of growth",
+    na.value = "grey"
+  )
+  
+  # ggplot and plotly
+  gdp_growth_rate_map_plot <- ggplot(data = join_map_data, aes(
+    x = long,
+    y = lat,
+    group = group,
+    fill = color,
+    text = paste("Country: ", region, "\nGDP Growth: ", round(GDP_Growth, digits = 2), "%")
+  )) +
+    geom_polygon(size = .1, color = "black") +
+    color_scale +
     labs(title = paste("GDP Growth Rate of all Countries in", year)) +
-    transparent_theme
+    coord_map()
+  
   
   ggplotly(gdp_growth_rate_map_plot, tooltip = "text")
+  
 }
