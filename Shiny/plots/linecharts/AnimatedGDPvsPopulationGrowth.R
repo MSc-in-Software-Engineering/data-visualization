@@ -1,3 +1,4 @@
+library(readxl)
 library(ggplot2)
 library(gganimate)
 library(hrbrthemes)
@@ -24,7 +25,7 @@ p <- filtered_data %>%
   geom_line(size = 1.2) +
   geom_point(size = 4, shape = 19, fill = "white") +
   theme_ipsum() +
-  ylab("Value") +
+  ylab("Percentage") +
   theme_minimal() +
   theme(panel.grid.major.x = element_blank(),
         
@@ -44,4 +45,7 @@ p <- filtered_data %>%
 
 
 # Animate and view the plot
-animate(p, nframes = 100, end_pause = 10)
+a <- animate(p, duration = 10, fps = 10, width = 2000, height = 1400, renderer = gifski_renderer(), res = 250)
+
+# Save animation
+anim_save("animation.gif", a)

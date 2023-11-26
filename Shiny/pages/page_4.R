@@ -19,7 +19,16 @@ page_4 <- function(input, output) {
             )
         ),
         column(width = 12, tags$hr()),
-        h2("Subsection 1", style = "font-weight: 600;"),
+        h2("Subsection 2", style = "font-weight: 600;"),
+        p("N/A", style = "font-size:17px;"),
+        fluidRow(
+            column(width = 3),
+            mainPanel(
+                img(src='AnimatedGDPvsPopulationGrowth.gif', align = "left", height=550,width=800),
+            )
+        ),
+        column(width = 12, tags$hr()),
+        h2("Subsection 3", style = "font-weight: 600;"),
         p("N/A", style = "font-size:17px;"),
         fluidRow(
             sidebarPanel(
