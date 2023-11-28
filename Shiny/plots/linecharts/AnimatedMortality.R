@@ -12,12 +12,12 @@ long_data <- WDI_data %>%
   mutate(Year = as.numeric(gsub(".*?(\\d{4}).*", "\\1", Year)))
 
 long_data <-
-  long_data[long_data$"Series Name" %in% c("Population growth (annual %)", "GDP growth (annual %)"),]
+  long_data[long_data$"Series Name" %in% c("Mortality from CVD, cancer, diabetes or CRD between exact ages 30 and 70, female (%)", "Mortality from CVD, cancer, diabetes or CRD between exact ages 30 and 70, male (%)"),]
 
 long_data$Value <- as.numeric(long_data$Value)
 long_data[is.na(long_data)] <- 0
 
-filtered_data <- long_data[long_data$"Country Name" == "Denmark", ]
+filtered_data <- long_data[long_data$"Country Name" == "China", ]
 
 # Plot
 p <- filtered_data %>%
@@ -31,18 +31,23 @@ p <- filtered_data %>%
         
         axis.text.x = element_text(angle = 45, hjust = 1),
         axis.ticks.x = element_blank(),
-        ) +
-  transition_reveal(Year)+
+  ) +
   scale_x_continuous(breaks = unique(long_data$Year))+
   scale_y_continuous(
-    limits = c(min(filtered_data$Value)-0.5, max(filtered_data$Value)),
-    breaks = seq(floor(min(filtered_data$Value))-0.5, ceiling(max(filtered_data$Value)), 0.5)
-  )+
+    limits = c(0, max(filtered_data$Value) + 1),
+    breaks = seq(0, max(filtered_data$Value) + 1, 4)
+  ) +
+  transition_reveal(Year)+
   scale_color_manual(values = c(
-    "Population growth (annual %)" = "#138D75",
-    "GDP growth (annual %)" = "#900C3F"
-  )) 
-
+    "Mortality from CVD, cancer, diabetes or CRD between exact ages 30 and 70, female (%)" = "#138D75",
+    "Mortality from CVD, cancer, diabetes or CRD between exact ages 30 and 70, male (%)" = "#900C3F"
+  ),
+  labels = c(
+    "Female (%)",
+    "Male (%)"
+  ))  +
+  labs(color = "Series Name", title = "Mortality from CVD, cancer, diabetes or CRD between exact ages 30 and 70 (Female/Male)")
+p
 
 # Animate and view the plot
 a <- animate(p, duration = 10, fps = 10, width = 2000, height = 1400, renderer = gifski_renderer(), res = 250)

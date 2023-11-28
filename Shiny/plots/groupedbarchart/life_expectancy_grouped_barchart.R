@@ -51,7 +51,7 @@ final_table$Year <- as.numeric(final_table$Year)
 final_table$Male <- as.numeric(final_table$Male)
 final_table$Female <- as.numeric(final_table$Female)
 
-life_expectancy_stacked_barchart <- function(selected_country) {
+life_expectancy_grouped_barchart <- function(selected_country) {
   selected_country <- selected_country
   specific_country <-
     subset(final_table, `Country Name` == selected_country)
