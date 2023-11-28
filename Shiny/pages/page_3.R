@@ -1,9 +1,11 @@
 page_3 <- function(input, output) {
     fluidPage(
         h1("Death and birth rate", style = "font-weight: 600;"),
-        p("N/A", style = "font-size:17px;"),
+        p("For this question, the dataset was analyzed where two data series were selected which are the “Death rate, crude (per 1,000 people)” and “Birth rate, crude (per 1,000 people)”. The selected data series would bring value to examining the death- and birth rates in different countries over the years. A scatter plot was utilized where the data was selected, filtered, and cleaned for non-existing values in order to visualize the data in the most meaningful manner.", style = "font-size:17px;"),
         column(width = 12, tags$hr()),
-        h2("Subsection 1", style = "font-weight: 600;"),
+        h2("Scatter plot with death and birth rate", style = "font-weight: 600;"),
+        p("For example, if the country India was chosen to examine the death and birth rate over the years.  The visualization for India showcases that the death rate was decreasing from 2010 to 2017 and then began to increase again. The birth rate was decreasing consistently interval which could be seen with the regression calculated based on each data series. The implemented regression line visually showcased the correlation between the data points. The scatterplot visualized how the death and birth rate progressed over the year where the example with India showcased that the birth rate was decreasing, and the death rate was increasing. This was a very interesting observation, the years 2020 and 2021 were impacted by the COVID-19 pandemic which could explain the death rate that was increasing drastically.", style = "font-size:17px;"),
+        
         fluidRow(
             sidebarPanel(
                 width = 3,
