@@ -19,4 +19,10 @@ server <- function(input, output, session) {
     output$birth_death_rate_scatterplot <- renderPlotly(birth_death_rate_scatterplot(input$countryScatterPlotSelectedCountry))
     output$gdp_vs_population_growth_linechart <- renderPlotly(gdp_vs_population_growth_linechart(input$countryLineChartSelectedCountry))
     output$life_expectancy_stacked_barchart <- renderPlotly(life_expectancy_stacked_barchart(input$countryStackedBarChartSelectedCountry))
+    output$downloadReport <- downloadHandler(
+    filename = "report.pdf",
+    content = function(file) {
+      file.copy("www/report.pdf", file)
+    }
+  )
 }
