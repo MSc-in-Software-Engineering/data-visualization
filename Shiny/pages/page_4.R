@@ -20,7 +20,7 @@ page_4 <- function(input, output) {
         ),
         column(width = 12, tags$hr()),
         h2("Mortality from prominent diseases in China", style = "font-weight: 600;"),
-        p("The following animated graph shows the mortality from cardiovascular diseases (CVDs), cancer, diabetes or chronic respiratory diseases (CRDs) between the ages of 30 and 70 for both male and female in China. It indicates that there is a higher mortality rate for males in constrast to females which could assume that males have lower life expectancy than females.", style = "font-size:17px;"),
+        p("The following animated graph shows the mortality from cardiovascular diseases (CVDs), cancer, diabetes or chronic respiratory diseases (CRDs) between the ages of 30 and 70 for both male and female in China. It indicates that there is a higher mortality rate for males in contrast to females which could assume that males have lower life expectancy than females.", style = "font-size:17px;"),
         fluidRow(
             column(width = 3),
             mainPanel(
