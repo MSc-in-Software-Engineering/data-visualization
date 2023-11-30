@@ -33,8 +33,8 @@ mortality_linechart <- function(selectedCountry) {
       title = "Mortality from CVD, cancer, diabetes or CRD between exact ages 30 and 70 (Female/Male)"
     ) +
     scale_y_continuous(
-      limits = c(0, max(filtered_data$Value) + 1),
-      breaks = seq(0, max(filtered_data$Value) + 1, 4)
+      limits = c(min(filtered_data$Value) - 1, max(filtered_data$Value) + 1),
+      breaks = seq(min(filtered_data$Value) - 1, max(filtered_data$Value) + 1, 1)
     ) +
     scale_x_continuous(breaks = unique(long_data$Year)) +
     theme_minimal() +
