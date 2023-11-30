@@ -4,7 +4,7 @@ page_4 <- function(input, output) {
         p("Within these last sections, the last  proposed research question is to be analyzed and answered upon which states “What gender has the highest life expectancy generally in the years past?”.", style = "font-size:17px;"),
         column(width = 12, tags$hr()),
         h2("Average life expectancy at birth for male and female", style = "font-weight: 600;"),
-        p("When averaging the life expectancy at birth for both male and female respectively, it is striking to see that in every country provided within the research, females generally have a higher life expectancy at birth in contrast to males. This goes for every region in the world at every year from 2010 to 2021. Utilize the country name dropdown to swap country datasets.", style = "font-size:17px;"),
+        p("When averaging the life expectancy at birth for both male and female respectively, it is striking to see that in every country provided within the research, females generally have a higher life expectancy at birth in contrast to males. This goes for every region in the world at every year from 2010 to 2021.", style = "font-size:17px;"),
         fluidRow(
             sidebarPanel(
                 width = 3,
