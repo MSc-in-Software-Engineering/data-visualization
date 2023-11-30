@@ -77,7 +77,7 @@ page_2 <- function(input, output) {
     p("To analyse and answer the following question “How large of a proportion of the country’s GDP is spent on education?” the “Government expenditure on education, total (% of GDP)” data series will be utilised. contains the percentage of the total percentage of country’s GDP that is spend on education from the year 2010 to 2022.", style = "font-size:17px;"),
     column(width = 12, tags$hr()),
     h2("Map chart of the government expenditure", style = "font-weight: 600;"),
-    p("The map chart visualizes how big of a percentage the governments spend on education from their total GDP. When examining the map through the different years it is noticeable that Namibia has had a dark green colour consistently through all the years, meaning the country has spent more than 8 % of their GDP on education. Namibia is one of the countries in Africa that has the highest literacy, and this could be correlated to the government’s expenditure on education.  "),
+    p("The map chart visualizes how big of a percentage the governments spend on education from their total GDP. When examining the map through the different years it is noticeable that Namibia has had a dark green colour consistently through all the years, meaning the country has spent more than 8 % of their GDP on education. Namibia is one of the countries in Africa that has the highest literacy, and this could be correlated to the government’s expenditure on education.  ", style = "font-size:17px;"),
     fluidRow(
       sidebarPanel(
         width = 3,
