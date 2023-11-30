@@ -56,7 +56,7 @@ gdp_growth_top_barchart <- function(selectedYear) {
       )
     ) +
     geom_bar(stat = "identity", color = "black") +
-    scale_fill_gradient(low = "lightgreen", high = "darkgreen") +
+    scale_fill_gradient(low = "lightblue", high = "darkblue") +
     labs(
       title = paste("Top 20 countries with highest GDP Growth Rates in", year),
       x = "Country",
@@ -103,7 +103,7 @@ gdp_growth_low_barchart <- function(selectedYear) {
       )
     ) +
     geom_bar(stat = "identity", color = "black") +
-    scale_fill_gradient(low = "darkred", high = "indianred1") +
+    scale_fill_gradient(low = "darkorange", high = "yellow") +
     labs(
       title = paste("Top 20 countries with lowest GDP Growth Rates in", year),
       x = "Country",

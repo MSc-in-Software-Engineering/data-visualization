@@ -4,6 +4,7 @@ library(tidyr)
 library(dplyr)
 library(stringr)
 library(maps)
+library(mapproj)
 library(plotly)
 
 WDI_data <- read_excel("datasets/world-development-indicators.xlsx")
@@ -64,7 +65,7 @@ government_education_expenditure_map <- function(selectedYear) {
   
   # Color scale for the percentage intervals
   color_scale <- scale_fill_manual(
-    values = c("darkgreen", "green", "lightgreen", "lightyellow", "white", "grey"),
+    values = c("darkblue", "blue", "lightblue", "lightyellow", "white", "grey"),
     breaks = legend_values,
     labels = legend_values,
     name = "% of GDP",

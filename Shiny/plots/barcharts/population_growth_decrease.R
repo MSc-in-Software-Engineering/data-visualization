@@ -38,7 +38,7 @@ population_growth_decrease_barchart <- function(selectedYear) {
 
     bar_chart <- ggplot(lowest_countries, aes(x = `Country Name`, y = Population_growth, fill = Population_growth, text = paste("Population growth (Annual %): ", Population_growth, "%"))) +
         geom_bar(stat = "identity", color = "black") +
-        scale_fill_gradient(low = "darkred", high = "indianred1") +
+        scale_fill_gradient(low = "darkorange", high = "yellow") +
         labs(
             title = paste("Top 20 countries with lowest population growth (Annual %) in", year),
             x = "Country",

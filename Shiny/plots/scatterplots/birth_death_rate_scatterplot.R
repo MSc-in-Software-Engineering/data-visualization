@@ -71,7 +71,7 @@ scatterPlot_1 <- ggplot() +
     ),
     size = 3
   ) +
-  scale_color_manual(values = c("Death Rate" = "red", "Birth Rate" = "green")) +
+  scale_color_manual(values = c("Death Rate" = "orange", "Birth Rate" = "blue")) +
   labs(x = "Year", y = "Rate (per 1,000 people)", title = "Death and Birth Rate of India Over Years") +
   theme(legend.position = "bottom") +
   labs(color = " ") +
@@ -145,7 +145,7 @@ birth_death_rate_scatterplot <- function(selectedCountry) {
       ),
       size = 3
     ) +
-    scale_color_manual(values = c("Death Rate" = "red", "Birth Rate" = "green")) +
+    scale_color_manual(values = c("Death Rate" = "orange", "Birth Rate" = "blue")) +
     labs(
       x = "Year",
       y = "Rate (per 1,000 people)",

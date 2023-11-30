@@ -46,8 +46,8 @@ mortality_linechart <- function(selectedCountry) {
       axis.ticks.x = element_blank()
     ) +
     scale_color_manual(values = c(
-      "Mortality from CVD, cancer, diabetes or CRD between exact ages 30 and 70, female (%)" = "#138D75",
-      "Mortality from CVD, cancer, diabetes or CRD between exact ages 30 and 70, male (%)" = "#900C3F"
+      "Mortality from CVD, cancer, diabetes or CRD between exact ages 30 and 70, female (%)" = "blue",
+      "Mortality from CVD, cancer, diabetes or CRD between exact ages 30 and 70, male (%)" = "orange"
     )) +
     annotate(geom = "segment", x = unique(long_data$Year), xend = unique(long_data$Year), y = -0.1, yend = 0.1, color = "black")
 

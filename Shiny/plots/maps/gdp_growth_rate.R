@@ -4,6 +4,7 @@ library(tidyr)
 library(dplyr)
 library(stringr)
 library(maps)
+library(mapproj)
 library(plotly)
 
 WDI_data <- read_excel("datasets/world-development-indicators.xlsx")
@@ -63,7 +64,7 @@ gdp_growth_rate_map <- function(selectedYear) {
   
   # Color scale for the percentage intervals
   color_scale <- scale_fill_manual(
-    values = c("darkgreen", "green", "lightgreen", "red", "darkred", "grey"),
+    values = c("darkblue", "blue", "lightblue", "goldenrod1", "coral2", "grey"),
     breaks = legend_values,
     labels = legend_values,
     name = "Percentage of growth",

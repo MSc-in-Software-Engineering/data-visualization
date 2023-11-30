@@ -38,7 +38,7 @@ population_growth_increase_barchart <- function(selectedYear) {
 
     bar_chart <- ggplot(highest_countries, aes(x = `Country Name`, y = Population_growth, fill = Population_growth, text = paste("Population growth (Annual %): ", Population_growth, "%"))) +
         geom_bar(stat = "identity", color = "black") +
-        scale_fill_gradient(low = "lightgreen", high = "darkgreen") +
+        scale_fill_gradient(low = "lightblue", high = "darkblue") +
         labs(
             title = paste("Top 20 countries with highest population growth (Annual %) in", year),
             x = "Country",

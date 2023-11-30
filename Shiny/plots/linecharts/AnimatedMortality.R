@@ -39,8 +39,8 @@ p <- filtered_data %>%
   ) +
   transition_reveal(Year)+
   scale_color_manual(values = c(
-    "Mortality from CVD, cancer, diabetes or CRD between exact ages 30 and 70, female (%)" = "#138D75",
-    "Mortality from CVD, cancer, diabetes or CRD between exact ages 30 and 70, male (%)" = "#900C3F"
+    "Mortality from CVD, cancer, diabetes or CRD between exact ages 30 and 70, female (%)" = "blue",
+    "Mortality from CVD, cancer, diabetes or CRD between exact ages 30 and 70, male (%)" = "orange"
   ),
   labels = c(
     "Female (%)",
