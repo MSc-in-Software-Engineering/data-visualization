@@ -20,6 +20,7 @@ source("plots/maps/gdp_growth_rate.r")
 source("plots/maps/government_education_expenditure.r")
 source("plots/scatterplots/birth_death_rate_scatterplot.r")
 source("plots/linecharts/Mortality.r")
+source("plots/linecharts/BirthAndDeathRateLineChart.r")
 source("plots/groupedbarchart/life_expectancy_grouped_barchart.r")
 library(profmem)
 
@@ -66,6 +67,8 @@ server <- function(input, output, session) {
   output$birth_death_rate_scatterplot <- renderPlotly(birth_death_rate_scatterplot(input$countryScatterPlotSelectedCountry))
   output$mortality_linechart <- renderPlotly(mortality_linechart(input$countryLineChartSelectedCountry))
   output$life_expectancy_grouped_barchart <- renderPlotly(life_expectancy_grouped_barchart(input$countryStackedBarChartSelectedCountry))
+  output$death_rate_line_chart <- renderPlotly(death_rate_line_chart())
+  output$birth_rate_line_chart <- renderPlotly(birth_rate_line_chart())
   output$downloadReport <- downloadHandler(
     filename = "report.pdf",
     content = function(file) {
