@@ -8,7 +8,7 @@ page_3 <- function(input, output) {
     column(width = 12, tags$hr()),
     h2("Scatter plot with death and birth rate", style = "font-weight: 600;"),
     p(
-      "For example, if India were chosen as the country to examine the death and birth rate over the year, it was shown that the death rate was decreasing from 2010 to 2017 and then began to increase again. The birth rate was decreasing with a consistent interval which could be seen with the regression calculated based on each data series. The implemented regression line visually showcased the correlation between the data points. The scatterplot visualized how the death and birth rate progressed over the year where the example with India showcased that the birth rate was decreasing, and the death rate were increasing. This is a very interesting observation, where the years 2020 and 2021 were impacted of the covid-19 pandemic around the world which could explain the death rate that was increasing drastically.",
+      "For example, if India were chosen as the country to examine the death and birth rate over the year, it was shown that the death rate was decreasing from 2010 to 2017 and then began to increase again. The birth rate was decreasing with a consistent interval which could be seen with the regression calculated based on each data series. The scatterplot visualized how the death and birth rate progressed over the year where the example with India showcased that the birth rate was decreasing, and the death rate were increasing.",
       style = "font-size:17px;"
     ),
     
@@ -29,8 +29,8 @@ page_3 <- function(input, output) {
         plotlyOutput("birth_death_rate_scatterplot")
       ),
       column(width = 12, tags$hr()),
-      h2("N/A", style = "font-weight: 600;"),
-      p("N/A", style = "font-size:17px;"),
+      h2("Line chart with death rate", style = "font-weight: 600;"),
+      p("The line chart visualizes the death rate of five different countries and visualizes the difference between each country while exmaming the death rate.", style = "font-size:17px;"),
       fluidRow(
         column(width = 3),
         mainPanel(
@@ -41,8 +41,8 @@ page_3 <- function(input, output) {
         )
       ),
       column(width = 12, tags$hr()),
-      h2("N/A", style = "font-weight: 600;"),
-      p("N/A", style = "font-size:17px;"),
+      h2("Line chart with birth rate", style = "font-weight: 600;"),
+      p("The line chart visualizes the birth rate of five different countries and visualizes the difference between each country while exmaming the birth rate.", style = "font-size:17px;"),
       fluidRow(
         column(width = 3),
         mainPanel(

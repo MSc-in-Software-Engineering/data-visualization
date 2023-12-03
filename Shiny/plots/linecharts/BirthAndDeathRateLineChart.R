@@ -74,7 +74,7 @@ death_rate_line_chart <- function() {
         "Nigeria" = "purple"
       )
     ) +
-    labs(x = "Year", y = "Death Rate (per 1,000 people)", title = "Death Rate of Selected Countries Over Years") +
+    labs(x = "Year", y = "Death Rate (per 1,000 people)", title = "Death Rate of the Defined Countries Over Years") +
     theme(legend.position = "bottom") +
     scale_x_continuous(breaks = seq(
       min(death_rate_filtered$Year),
@@ -114,7 +114,7 @@ birth_rate_line_chart <- function() {
         "Nigeria" = "purple"
       )
     ) +
-    labs(x = "Year", y = "Birth Rate (per 1,000 people)", title = "Birth Rate of Selected Countries Over Years") +
+    labs(x = "Year", y = "Birth Rate (per 1,000 people)", title = "Birth Rate of the Defined Countries Over Years") +
     theme(legend.position = "bottom") +
     scale_x_continuous(breaks = seq(
       min(birth_rate_filtered$Year),
